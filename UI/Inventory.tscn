@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://sbp1hnm21dml"]
+
+[ext_resource type="PackedScene" uid="uid://3k123r2175jf" path="res://Inventory/inventory_slot.tscn" id="1_abfov"]
+[ext_resource type="Script" path="res://UI/Scripts/InventoryUI.gd" id="1_kkxbk"]
+
+[node name="InventoryUI" type="Control"]
+layout_mode = 3
+anchor_top = 0.025
+anchor_right = 0.169
+anchor_bottom = 0.127
+offset_left = 1.0
+offset_right = 0.519958
+offset_bottom = -0.160004
+script = ExtResource("1_kkxbk")
+
+[node name="WeaponInventory" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.009
+offset_left = 1.0
+offset_top = 3.0
+offset_bottom = 0.00999451
+columns = 6
+
+[node name="InventorySlot1" parent="WeaponInventory" instance=ExtResource("1_abfov")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="WeaponInventory" instance=ExtResource("1_abfov")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="WeaponInventory" instance=ExtResource("1_abfov")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="WeaponInventory" instance=ExtResource("1_abfov")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="WeaponInventory" instance=ExtResource("1_abfov")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="WeaponInventory" instance=ExtResource("1_abfov")]
+layout_mode = 2
+
+[node name="TrinketInventory" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.009
+offset_left = 1.0
+offset_top = 55.0
+offset_bottom = 52.01
+columns = 6
+
+[node name="InventorySlot1" parent="TrinketInventory" instance=ExtResource("1_abfov")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="TrinketInventory" instance=ExtResource("1_abfov")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="TrinketInventory" instance=ExtResource("1_abfov")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="TrinketInventory" instance=ExtResource("1_abfov")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="TrinketInventory" instance=ExtResource("1_abfov")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="TrinketInventory" instance=ExtResource("1_abfov")]
+layout_mode = 2

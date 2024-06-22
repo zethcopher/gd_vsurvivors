@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="UpgradeChoices" load_steps=3 format=3 uid="uid://clgabjljgsnty"]
+
+[ext_resource type="Script" path="res://Scripts/UpgradeChoices.gd" id="1_7ry1o"]
+[ext_resource type="Resource" uid="uid://bflskdbycrrug" path="res://Inventory/Items/Weapons/Axe.tres" id="1_gpffl"]
+
+[resource]
+script = ExtResource("1_7ry1o")
+choices = Array[Resource("res://Scripts/Item.gd")]([ExtResource("1_gpffl")])

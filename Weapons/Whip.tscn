@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjskublqf1qch"]
+
+[ext_resource type="PackedScene" uid="uid://da65efom23wew" path="res://Components/ProjectileSpawnerComponent.tscn" id="2_dssek"]
+
+[node name="Whip" type="Node2D"]
+
+[node name="ProjectileSpawner" parent="." instance=ExtResource("2_dssek")]

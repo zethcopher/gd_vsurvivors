@@ -1,0 +1,111 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=13 format=3 uid="uid://bflskdbycrrug"]
+
+[ext_resource type="Script" path="res://Scripts/WeaponStats.gd" id="1_m31ei"]
+[ext_resource type="Script" path="res://Scripts/Weapon.gd" id="1_mvpjt"]
+[ext_resource type="Texture2D" uid="uid://hqnneuoyprjc" path="res://Assets/0x72_DungeonTilesetII_v1.7/frames/weapon_double_axe.png" id="2_p30uk"]
+[ext_resource type="PackedScene" uid="uid://csko2pe32w7ci" path="res://Weapons/Axe.tscn" id="4_n45jo"]
+
+[sub_resource type="Resource" id="Resource_gpono"]
+script = ExtResource("1_m31ei")
+damage = 30
+area = 1.0
+duration = 0
+speed = 1
+cooldown = 4
+projectiles = 1
+piercing = 3
+follows_player = false
+item_level_description = "Throws axes above the player. Deals heavy damage."
+
+[sub_resource type="Resource" id="Resource_kmogh"]
+script = ExtResource("1_m31ei")
+damage = 30
+area = 1.0
+duration = 0
+speed = 1
+cooldown = 4
+projectiles = 2
+piercing = 3
+follows_player = false
+item_level_description = "Adds 1 projectile."
+
+[sub_resource type="Resource" id="Resource_q5vi3"]
+script = ExtResource("1_m31ei")
+damage = 30
+area = 1.0
+duration = 0
+speed = 1
+cooldown = 4
+projectiles = 2
+piercing = 6
+follows_player = false
+item_level_description = "Pierces 3 more enemies."
+
+[sub_resource type="Resource" id="Resource_jpolh"]
+script = ExtResource("1_m31ei")
+damage = 50
+area = 1.0
+duration = 0
+speed = 1
+cooldown = 4
+projectiles = 2
+piercing = 6
+follows_player = false
+item_level_description = "Adds 20 damage."
+
+[sub_resource type="Resource" id="Resource_shppq"]
+script = ExtResource("1_m31ei")
+damage = 50
+area = 1.0
+duration = 0
+speed = 1
+cooldown = 4
+projectiles = 3
+piercing = 6
+follows_player = false
+item_level_description = "Adds 1 Projectiles"
+
+[sub_resource type="Resource" id="Resource_cng43"]
+script = ExtResource("1_m31ei")
+damage = 70
+area = 1.0
+duration = 0
+speed = 1
+cooldown = 4
+projectiles = 3
+piercing = 6
+follows_player = false
+item_level_description = "Adds 20 more damage."
+
+[sub_resource type="Resource" id="Resource_dqnau"]
+script = ExtResource("1_m31ei")
+damage = 70
+area = 1.0
+duration = 0
+speed = 1
+cooldown = 3
+projectiles = 3
+piercing = 6
+follows_player = false
+item_level_description = "Reduces Cooldown"
+
+[sub_resource type="Resource" id="Resource_315u1"]
+script = ExtResource("1_m31ei")
+damage = 100
+area = 1.0
+duration = 0
+speed = 1
+cooldown = 3
+projectiles = 3
+piercing = 6
+follows_player = false
+item_level_description = "Adds 30 more damage."
+
+[resource]
+script = ExtResource("1_mvpjt")
+weapon_scene = ExtResource("4_n45jo")
+texture = ExtResource("2_p30uk")
+name = "Axe"
+description = "Fires projectiles above the player. Deals heavy damage."
+level = 0
+item_levels = Array[Resource("res://Scripts/ItemStats.gd")]([SubResource("Resource_gpono"), SubResource("Resource_kmogh"), SubResource("Resource_q5vi3"), SubResource("Resource_jpolh"), SubResource("Resource_shppq"), SubResource("Resource_cng43"), SubResource("Resource_dqnau"), SubResource("Resource_315u1")])

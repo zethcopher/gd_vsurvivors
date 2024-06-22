@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://brp7ddo728sg0"]
+
+[ext_resource type="Script" path="res://Scripts/interactable.gd" id="1_11k0b"]
+[ext_resource type="Texture2D" uid="uid://b3tknty2ti0ea" path="res://Assets/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7.png" id="2_6ucd5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5fk3l"]
+radius = 17.2627
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ysn5"]
+atlas = ExtResource("2_6ucd5")
+region = Rect2(336, 400, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auwlr"]
+atlas = ExtResource("2_6ucd5")
+region = Rect2(304, 416, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pcyt"]
+atlas = ExtResource("2_6ucd5")
+region = Rect2(320, 416, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sauv2"]
+atlas = ExtResource("2_6ucd5")
+region = Rect2(336, 416, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_supjq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ysn5")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_auwlr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pcyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sauv2")
+}],
+"loop": false,
+"name": &"open",
+"speed": 5.0
+}]
+
+[node name="Interactable" type="Node2D"]
+script = ExtResource("1_11k0b")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(8, -6)
+shape = SubResource("CircleShape2D_5fk3l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, -8)
+sprite_frames = SubResource("SpriteFrames_supjq")
+animation = &"open"
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://dego43yqec7ev"]
+
+[ext_resource type="Texture2D" uid="uid://b3tknty2ti0ea" path="res://Assets/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7.png" id="1_i6xiy"]
+[ext_resource type="Script" path="res://Scripts/HitBox.gd" id="1_q6u50"]
+[ext_resource type="Script" path="res://Scripts/weapon.gd" id="1_ugkul"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_444up"]
+size = Vector2(20, 27)
+
+[node name="Weapon" type="RigidBody2D"]
+script = ExtResource("1_ugkul")
+
+[node name="AttackCooldown" type="Timer" parent="."]
+process_callback = 0
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, -12)
+texture = ExtResource("1_i6xiy")
+region_enabled = true
+region_rect = Rect2(288, 167, 16, 24)
+
+[node name="HitBox" type="Area2D" parent="."]
+position = Vector2(8, -12)
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_q6u50")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_444up")
+
+[node name="Physics" type="CollisionShape2D" parent="."]
+position = Vector2(8, -13.5)
+shape = SubResource("RectangleShape2D_444up")
+
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="area_entered" from="HitBox" to="HitBox" method="_on_area_entered"]

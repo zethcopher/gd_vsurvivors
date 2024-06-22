@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://cf5tjvgka0buk"]
+
+[ext_resource type="Script" path="res://Scripts/Game.gd" id="1_rsu1m"]
+[ext_resource type="Resource" uid="uid://b113aj2wb5f5n" path="res://Inventory/PlayerInventory.tres" id="2_hg4xo"]
+[ext_resource type="PackedScene" uid="uid://vukmevc4jy3r" path="res://Scenes/Player.tscn" id="4_s8reo"]
+[ext_resource type="PackedScene" uid="uid://brp7ddo728sg0" path="res://Scenes/Interactable.tscn" id="5_4bk6u"]
+[ext_resource type="PackedScene" uid="uid://b863iq8pwvhdi" path="res://UI/UI.tscn" id="5_84mtr"]
+
+[sub_resource type="Curve2D" id="Curve2D_6fn01"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -123, -88, 0, 0, 0, 0, 144.844, -89.5061, 0, 0, 0, 0, 146.088, -11.7528, 0, 0, 0, 0, 146.088, 69.3327, 0, 0, 0, 0, -75.0132, 70.4435, 0, 0, 0, 0, -124.497, 68.7773, 0, 0, 0, 0, -124, -88)
+}
+point_count = 7
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_rsu1m")
+player_inventory = ExtResource("2_hg4xo")
+
+[node name="UI" parent="." instance=ExtResource("5_84mtr")]
+
+[node name="Interactable" parent="." instance=ExtResource("5_4bk6u")]
+position = Vector2(48, -17)
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+autostart = true
+
+[node name="Player" parent="." instance=ExtResource("4_s8reo")]
+unique_name_in_owner = true
+scale = Vector2(1, 1.04128)
+
+[node name="Path2D" type="Path2D" parent="Player"]
+unique_name_in_owner = true
+position = Vector2(-17.8553, 12.64)
+scale = Vector2(1.60763, 1.72919)
+curve = SubResource("Curve2D_6fn01")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/Path2D"]
+unique_name_in_owner = true
+position = Vector2(-124.343, 20.1554)
+rotation = -1.56763
+progress = 745.941
+
+[node name="GameTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="interactable_picked_up" from="Interactable" to="Player" method="_on_interactable_interactable_picked_up"]
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
+[connection signal="gained_experience" from="Player" to="." method="_on_player_gained_experience"]
+[connection signal="leveled_up" from="Player" to="." method="_on_player_leveled_up"]
+[connection signal="playerdied" from="Player" to="." method="_on_player_playerdied"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]

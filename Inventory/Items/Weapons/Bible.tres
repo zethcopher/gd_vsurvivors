@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://f1nxdor2m1rx"]
+
+[ext_resource type="Script" path="res://Scripts/Weapon.gd" id="1_epsji"]
+[ext_resource type="Texture2D" uid="uid://dbesh4wqiyagq" path="res://Assets/spritesheet_16x16.png" id="2_hmx1s"]
+[ext_resource type="PackedScene" uid="uid://ddsrt8p846mvx" path="res://Weapons/Bible.tscn" id="3_ivjtl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sh2bs"]
+atlas = ExtResource("2_hmx1s")
+region = Rect2(161, 32, 14, 16)
+
+[resource]
+script = ExtResource("1_epsji")
+weapon_scene = ExtResource("3_ivjtl")
+texture = SubResource("AtlasTexture_sh2bs")
+name = ""
+description = ""
+level = 0
+item_levels = Array[Resource("res://Scripts/ItemStats.gd")]([])

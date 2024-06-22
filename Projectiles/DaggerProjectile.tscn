@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcvp0c42rlyj5"]
+
+[ext_resource type="Script" path="res://Scripts/Dagger.gd" id="1_cpl51"]
+[ext_resource type="Texture2D" uid="uid://b3tknty2ti0ea" path="res://Assets/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7.png" id="2_bqk6r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x8ojm"]
+size = Vector2(8, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wb1hy"]
+size = Vector2(16, 10)
+
+[node name="DaggerProjectile" type="RigidBody2D" groups=["weapons"]]
+gravity_scale = 0.0
+script = ExtResource("1_cpl51")
+
+[node name="ProjectileCooldown" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(22.5, 4.72069e-05)
+rotation = 1.57079
+scale = Vector2(0.4, 0.75)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(22.5, 4.72069e-05)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_x8ojm")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D"]
+position = Vector2(13.5, 4.72069e-05)
+rotation = 1.57079
+texture = ExtResource("2_bqk6r")
+offset = Vector2(-2.38419e-07, -8.25)
+region_enabled = true
+region_rect = Rect2(293, 10, 6, 13)
+
+[node name="Hitbox" type="Area2D" parent="Marker2D/Sprite2D"]
+unique_name_in_owner = true
+position = Vector2(-1.90735e-06, 0.25)
+rotation = -1.57079
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/Sprite2D/Hitbox"]
+position = Vector2(9, 0)
+shape = SubResource("RectangleShape2D_wb1hy")
+
+[connection signal="body_entered" from="Marker2D/Sprite2D/Hitbox" to="." method="_on_hitbox_body_entered"]

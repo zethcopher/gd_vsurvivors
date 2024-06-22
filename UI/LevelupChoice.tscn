@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgf627n1y8roj"]
+
+[ext_resource type="Script" path="res://UI/Scripts/LevelupChoiceUI.gd" id="1_pvycd"]
+[ext_resource type="Texture2D" uid="uid://b3tknty2ti0ea" path="res://Assets/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7.png" id="2_npqgy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_licfn"]
+atlas = ExtResource("2_npqgy")
+region = Rect2(288, 167, 16, 25)
+
+[node name="LevelUpChoice" type="Button"]
+custom_minimum_size = Vector2(700, 150)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -388.0
+offset_top = -75.0
+offset_right = 388.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_pvycd")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 10.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.936295, 0.816194)
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+texture = SubResource("AtlasTexture_licfn")
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="ChoiceName" type="Label" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "
+Test"
+vertical_alignment = 1
+
+[node name="ChoiceDescription" type="Label" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "test"
+vertical_alignment = 1

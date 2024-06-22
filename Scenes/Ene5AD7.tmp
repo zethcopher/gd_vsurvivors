@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=3 uid="uid://ljs0gmajqeot"]
+
+[ext_resource type="Texture2D" uid="uid://b3tknty2ti0ea" path="res://Assets/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7.png" id="1_hksda"]
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_uo2xi"]
+[ext_resource type="Script" path="res://Scripts/HurtBox.gd" id="2_np55h"]
+
+[sub_resource type="Animation" id="Animation_dl2rh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_hksda")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_chna0"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_hksda")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e5gxm"]
+_data = {
+"RESET": SubResource("Animation_dl2rh"),
+"idle": SubResource("Animation_chna0")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p0iw5"]
+size = Vector2(11, 14)
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_uo2xi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5, -7)
+texture = ExtResource("1_hksda")
+hframes = 8
+region_enabled = true
+region_rect = Rect2(367, 85, 130, 24)
+
+[node name="HurtBox" type="Area2D" parent="Sprite2D"]
+position = Vector2(1, 1)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_np55h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_e5gxm")
+}
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5.5, -7)
+shape = SubResource("RectangleShape2D_p0iw5")
+
+[connection signal="area_entered" from="Sprite2D/HurtBox" to="Sprite2D/HurtBox" method="_on_area_entered"]

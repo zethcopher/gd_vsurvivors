@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://yj7f2ss50hvc"]
+
+[node name="Projectile" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+rotation = 1.5708
+offset = Vector2(0.000170946, -8.5)
+region_enabled = true
+region_rect = Rect2(162, 32, 12, 16)
+
+[node name="Hitbox" type="Area2D" parent="Sprite2D"]
+unique_name_in_owner = true
+rotation = -1.57079
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Hitbox"]

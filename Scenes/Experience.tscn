@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://cs7lw1hfg5x8p"]
+
+[ext_resource type="Texture2D" uid="uid://d4muub1fog5ce" path="res://Assets/CoinsGems/coins-chests-etc-2-0-noborders.png" id="1_1h50a"]
+[ext_resource type="Script" path="res://Scripts/Experience.gd" id="1_ve80d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncueu"]
+atlas = ExtResource("1_1h50a")
+region = Rect2(192, 448, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37ivs"]
+atlas = ExtResource("1_1h50a")
+region = Rect2(208, 448, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4axkt"]
+atlas = ExtResource("1_1h50a")
+region = Rect2(224, 448, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_822ty"]
+atlas = ExtResource("1_1h50a")
+region = Rect2(240, 448, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qa1uk"]
+atlas = ExtResource("1_1h50a")
+region = Rect2(256, 448, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnp32"]
+atlas = ExtResource("1_1h50a")
+region = Rect2(272, 448, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k1p6f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncueu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37ivs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4axkt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_822ty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qa1uk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnp32")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_452gi"]
+radius = 7.0
+
+[node name="Experience" type="Area2D"]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_ve80d")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(4, -5)
+sprite_frames = SubResource("SpriteFrames_k1p6f")
+frame = 4
+frame_progress = 0.359149
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, -5)
+shape = SubResource("CircleShape2D_452gi")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

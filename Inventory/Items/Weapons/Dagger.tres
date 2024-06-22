@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=4 format=3 uid="uid://cbu5hdhe680sg"]
+
+[ext_resource type="Script" path="res://Scripts/Weapon.gd" id="1_7tbkx"]
+[ext_resource type="Texture2D" uid="uid://7r3eomcdx0b1" path="res://Assets/0x72_DungeonTilesetII_v1.7/frames/weapon_knife.png" id="2_57fgx"]
+[ext_resource type="PackedScene" uid="uid://dm43ub60et12f" path="res://Weapons/Dagger.tscn" id="3_kmlxy"]
+
+[resource]
+script = ExtResource("1_7tbkx")
+weapon_scene = ExtResource("3_kmlxy")
+weapon_levels = Array[Resource("res://Scripts/WeaponStats.gd")]([])
+texture = ExtResource("2_57fgx")
+name = "Dagger"
+item_levels = Array[Resource("res://Scripts/ItemStats.gd")]([])
