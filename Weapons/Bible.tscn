@@ -1,7 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddsrt8p846mvx"]
+[gd_scene load_steps=3 format=3 uid="uid://ddsrt8p846mvx"]
 
+[ext_resource type="Script" path="res://Scripts/PlayerWeapon.gd" id="1_31fth"]
 [ext_resource type="PackedScene" uid="uid://da65efom23wew" path="res://Components/ProjectileSpawnerComponent.tscn" id="2_ikske"]
 
 [node name="BibleWeapon" type="Node2D" groups=["weapons"]]
+script = ExtResource("1_31fth")
+
+[node name="WeaponCooldownTimer" type="Timer" parent="."]
 
 [node name="ProjectileSpawner" parent="." instance=ExtResource("2_ikske")]
+
+[connection signal="timeout" from="WeaponCooldownTimer" to="ProjectileSpawner" method="_on_weapon_cooldown_timer_timeout"]

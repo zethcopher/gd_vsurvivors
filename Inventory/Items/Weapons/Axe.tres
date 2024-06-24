@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/WeaponStats.gd" id="1_m31ei"]
 [ext_resource type="Script" path="res://Scripts/Weapon.gd" id="1_mvpjt"]
 [ext_resource type="Texture2D" uid="uid://hqnneuoyprjc" path="res://Assets/0x72_DungeonTilesetII_v1.7/frames/weapon_double_axe.png" id="2_p30uk"]
-[ext_resource type="PackedScene" uid="uid://csko2pe32w7ci" path="res://Weapons/Axe.tscn" id="4_n45jo"]
+[ext_resource type="PackedScene" uid="uid://dego43yqec7ev" path="res://Projectiles/AxeProjectile.tscn" id="4_x8jjh"]
 
 [sub_resource type="Resource" id="Resource_gpono"]
 script = ExtResource("1_m31ei")
@@ -15,7 +15,7 @@ cooldown = 4
 projectiles = 1
 piercing = 3
 follows_player = false
-item_level_description = "Throws axes above the player. Deals heavy damage."
+item_level_description = "High damage, high Area scaling."
 
 [sub_resource type="Resource" id="Resource_kmogh"]
 script = ExtResource("1_m31ei")
@@ -27,19 +27,19 @@ cooldown = 4
 projectiles = 2
 piercing = 3
 follows_player = false
-item_level_description = "Adds 1 projectile."
+item_level_description = "Fires 1 more projectile."
 
 [sub_resource type="Resource" id="Resource_q5vi3"]
 script = ExtResource("1_m31ei")
-damage = 30
+damage = 50
 area = 1.0
 duration = 0
 speed = 1
 cooldown = 4
 projectiles = 2
-piercing = 6
+piercing = 3
 follows_player = false
-item_level_description = "Pierces 3 more enemies."
+item_level_description = "Base Damage up by 20."
 
 [sub_resource type="Resource" id="Resource_jpolh"]
 script = ExtResource("1_m31ei")
@@ -49,9 +49,9 @@ duration = 0
 speed = 1
 cooldown = 4
 projectiles = 2
-piercing = 6
+piercing = 5
 follows_player = false
-item_level_description = "Adds 20 damage."
+item_level_description = "Passes through 2 more enemies."
 
 [sub_resource type="Resource" id="Resource_shppq"]
 script = ExtResource("1_m31ei")
@@ -103,9 +103,9 @@ item_level_description = "Adds 30 more damage."
 
 [resource]
 script = ExtResource("1_mvpjt")
-weapon_scene = ExtResource("4_n45jo")
+weapon_scene = ExtResource("4_x8jjh")
 texture = ExtResource("2_p30uk")
 name = "Axe"
-description = "Fires projectiles above the player. Deals heavy damage."
-level = 0
+item_id = 3
+level = 1
 item_levels = Array[Resource("res://Scripts/ItemStats.gd")]([SubResource("Resource_gpono"), SubResource("Resource_kmogh"), SubResource("Resource_q5vi3"), SubResource("Resource_jpolh"), SubResource("Resource_shppq"), SubResource("Resource_cng43"), SubResource("Resource_dqnau"), SubResource("Resource_315u1")])

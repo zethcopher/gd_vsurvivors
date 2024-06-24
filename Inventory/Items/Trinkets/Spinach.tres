@@ -1,22 +1,43 @@
-[gd_resource type="Resource" script_class="Item" load_steps=6 format=3 uid="uid://mkbj26ax4rkb"]
+[gd_resource type="Resource" script_class="Trinket" load_steps=10 format=3 uid="uid://mkbj26ax4rkb"]
 
-[ext_resource type="Script" path="res://Scripts/Item.gd" id="1_a2xae"]
 [ext_resource type="Script" path="res://Scripts/TrinketStats.gd" id="1_xu3mc"]
 [ext_resource type="Texture2D" uid="uid://ckd5myito16dm" path="res://Assets/lpc leaf recolors.png" id="2_5c5m4"]
+[ext_resource type="Script" path="res://Scripts/Trinket.gd" id="2_j07om"]
 
-[sub_resource type="Resource" id="Resource_kxkxb"]
+[sub_resource type="Resource" id="Resource_cb8jg"]
 script = ExtResource("1_xu3mc")
-stat = "Might"
-value = 1.1
-item_level = 1
-item_level_description = "Increases Might by 10%"
+value = 0.1
+item_level_description = "[All]Increases Base Damage by 10%"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hpo66"]
+[sub_resource type="Resource" id="Resource_xan1w"]
+script = ExtResource("1_xu3mc")
+value = 0.1
+item_level_description = "[All] Increases Base Damage by 10%"
+
+[sub_resource type="Resource" id="Resource_hqipt"]
+script = ExtResource("1_xu3mc")
+value = 0.1
+item_level_description = "[All] Increases Base Damage by 10%"
+
+[sub_resource type="Resource" id="Resource_3in24"]
+script = ExtResource("1_xu3mc")
+value = 0.1
+item_level_description = "[All] Increases Base Damage by 10%"
+
+[sub_resource type="Resource" id="Resource_5lk48"]
+script = ExtResource("1_xu3mc")
+value = 0.1
+item_level_description = "[All] Increases Base Damage by 10%"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6kw7h"]
 atlas = ExtResource("2_5c5m4")
-region = Rect2(33, 1, 17, 15)
+region = Rect2(32, 1, 19, 15)
 
 [resource]
-script = ExtResource("1_a2xae")
-texture = SubResource("AtlasTexture_hpo66")
+script = ExtResource("2_j07om")
+stat = "might"
+texture = SubResource("AtlasTexture_6kw7h")
 name = "Spinach"
-item_levels = Array[Resource("res://Scripts/ItemStats.gd")]([SubResource("Resource_kxkxb"), null, null, null, null])
+item_id = 2
+level = 1
+item_levels = Array[Resource("res://Scripts/ItemStats.gd")]([SubResource("Resource_cb8jg"), SubResource("Resource_xan1w"), SubResource("Resource_hqipt"), SubResource("Resource_3in24"), SubResource("Resource_5lk48")])

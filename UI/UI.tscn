@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://deu87135bwnqx" path="res://UI/level_up.tscn" id="2_o3if3"]
 [ext_resource type="PackedScene" uid="uid://cgf627n1y8roj" path="res://UI/LevelupChoice.tscn" id="2_stwln"]
 [ext_resource type="PackedScene" uid="uid://sbp1hnm21dml" path="res://UI/Inventory.tscn" id="4_n7v6b"]
-[ext_resource type="Resource" uid="uid://p1krbye81f8i" path="res://Inventory/PlayerInventory.tres" id="5_2y2d2"]
+[ext_resource type="Resource" uid="uid://p1krbye81f8i" path="res://Inventory/WeaponInventory.tres" id="5_2y2d2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wlsxs"]
 bg_color = Color(0.172833, 0.172833, 0.172833, 1)

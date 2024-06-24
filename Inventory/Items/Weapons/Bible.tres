@@ -1,8 +1,105 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://f1nxdor2m1rx"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=14 format=3 uid="uid://f1nxdor2m1rx"]
 
+[ext_resource type="Script" path="res://Scripts/WeaponStats.gd" id="1_3p167"]
 [ext_resource type="Script" path="res://Scripts/Weapon.gd" id="1_epsji"]
 [ext_resource type="Texture2D" uid="uid://dbesh4wqiyagq" path="res://Assets/spritesheet_16x16.png" id="2_hmx1s"]
-[ext_resource type="PackedScene" uid="uid://ddsrt8p846mvx" path="res://Weapons/Bible.tscn" id="3_ivjtl"]
+[ext_resource type="PackedScene" uid="uid://bogaqpxhl46b0" path="res://Projectiles/BibleProjectile.tscn" id="4_h0mgs"]
+
+[sub_resource type="Resource" id="Resource_yacef"]
+script = ExtResource("1_3p167")
+damage = 10
+area = 1.0
+duration = 4
+speed = 1
+cooldown = 8
+projectiles = 1
+piercing = -1
+follows_player = true
+item_level_description = "Projectile that orbits around the player"
+
+[sub_resource type="Resource" id="Resource_sg8rf"]
+script = ExtResource("1_3p167")
+damage = 10
+area = 1.0
+duration = 5
+speed = 1
+cooldown = 8
+projectiles = 1
+piercing = -1
+follows_player = true
+item_level_description = "Projectile that orbits around the player"
+
+[sub_resource type="Resource" id="Resource_0xktl"]
+script = ExtResource("1_3p167")
+damage = 10
+area = 1.0
+duration = 5
+speed = 1
+cooldown = 8
+projectiles = 1
+piercing = -1
+follows_player = true
+item_level_description = "Projectile that orbits around the player"
+
+[sub_resource type="Resource" id="Resource_cflmo"]
+script = ExtResource("1_3p167")
+damage = 10
+area = 1.0
+duration = 5
+speed = 1
+cooldown = 8
+projectiles = 1
+piercing = -1
+follows_player = true
+item_level_description = "Projectile that orbits around the player"
+
+[sub_resource type="Resource" id="Resource_v2cuc"]
+script = ExtResource("1_3p167")
+damage = 10
+area = 1.0
+duration = 5
+speed = 1
+cooldown = 8
+projectiles = 1
+piercing = -1
+follows_player = true
+item_level_description = "Projectile that orbits around the player"
+
+[sub_resource type="Resource" id="Resource_1mmhl"]
+script = ExtResource("1_3p167")
+damage = 10
+area = 1.0
+duration = 5
+speed = 1
+cooldown = 8
+projectiles = 1
+piercing = -1
+follows_player = true
+item_level_description = "Projectile that orbits around the player"
+
+[sub_resource type="Resource" id="Resource_7sa0c"]
+script = ExtResource("1_3p167")
+damage = 10
+area = 1.0
+duration = 5
+speed = 1
+cooldown = 8
+projectiles = 1
+piercing = -1
+follows_player = true
+item_level_description = "Projectile that orbits around the player"
+
+[sub_resource type="Resource" id="Resource_a8a0j"]
+script = ExtResource("1_3p167")
+damage = 10
+area = 1.0
+duration = 5
+speed = 1
+cooldown = 10
+projectiles = 1
+piercing = -1
+follows_player = true
+item_level_description = "Projectile that orbits around the player"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sh2bs"]
 atlas = ExtResource("2_hmx1s")
@@ -10,9 +107,9 @@ region = Rect2(161, 32, 14, 16)
 
 [resource]
 script = ExtResource("1_epsji")
-weapon_scene = ExtResource("3_ivjtl")
+weapon_scene = ExtResource("4_h0mgs")
 texture = SubResource("AtlasTexture_sh2bs")
-name = ""
-description = ""
-level = 0
-item_levels = Array[Resource("res://Scripts/ItemStats.gd")]([])
+name = "Bible"
+item_id = 2
+level = 1
+item_levels = Array[Resource("res://Scripts/ItemStats.gd")]([SubResource("Resource_yacef"), SubResource("Resource_sg8rf"), SubResource("Resource_0xktl"), SubResource("Resource_cflmo"), SubResource("Resource_v2cuc"), SubResource("Resource_1mmhl"), SubResource("Resource_7sa0c"), SubResource("Resource_a8a0j")])

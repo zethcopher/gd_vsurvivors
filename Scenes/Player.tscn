@@ -1,11 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://vukmevc4jy3r"]
+[gd_scene load_steps=13 format=3 uid="uid://vukmevc4jy3r"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_25v1c"]
 [ext_resource type="Texture2D" uid="uid://b3tknty2ti0ea" path="res://Assets/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7.png" id="2_26guj"]
-[ext_resource type="Resource" uid="uid://p1krbye81f8i" path="res://Inventory/PlayerInventory.tres" id="2_g1duj"]
 [ext_resource type="Script" path="res://Scripts/PlayerWeaponSlot.gd" id="3_wnx46"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qbsid"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7rfvx"]
+size = Vector2(4, 11.0649)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uk50r"]
+size = Vector2(8.14936, 11.1489)
 
 [sub_resource type="Animation" id="Animation_lawin"]
 length = 0.001
@@ -76,14 +79,15 @@ bg_color = Color(0.131124, 0.277923, 0.181581, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bi6xm"]
 bg_color = Color(0.15117, 0.723213, 0, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7rfvx"]
-size = Vector2(4, 11.0649)
-
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_25v1c")
-weapon_inventory = ExtResource("2_g1duj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(1, 0.361503)
+shape = SubResource("RectangleShape2D_7rfvx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 5
@@ -100,9 +104,9 @@ collision_layer = 2
 collision_mask = 20
 
 [node name="HitboxShape" type="CollisionShape2D" parent="Sprite2D/Hitbox"]
-position = Vector2(-1, -1)
+position = Vector2(-0.82312, -0.854796)
 scale = Vector2(0.808034, 0.920049)
-shape = SubResource("CircleShape2D_qbsid")
+shape = SubResource("RectangleShape2D_uk50r")
 debug_color = Color(1, 0.00568212, 0.0589638, 0.42)
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -128,11 +132,6 @@ show_percentage = false
 
 [node name="HealthRegen" type="Timer" parent="."]
 autostart = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
-scale = Vector2(1, 0.361503)
-shape = SubResource("RectangleShape2D_7rfvx")
 
 [node name="Take_Damage_Cooldown" type="Timer" parent="."]
 

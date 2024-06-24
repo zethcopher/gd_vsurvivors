@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="Inventory" load_steps=3 format=3 uid="uid://p1krbye81f8i"]
 
-[ext_resource type="Resource" uid="uid://bflskdbycrrug" path="res://Inventory/Items/Weapons/Axe.tres" id="1_hq5ls"]
+[ext_resource type="Resource" uid="uid://f1nxdor2m1rx" path="res://Inventory/Items/Weapons/Bible.tres" id="1_82txh"]
 [ext_resource type="Script" path="res://Scripts/Inventory.gd" id="2_pof6q"]
 
 [resource]
 script = ExtResource("2_pof6q")
-items = Array[Resource("res://Scripts/Item.gd")]([ExtResource("1_hq5ls")])
+items = Array[Resource("res://Scripts/Item.gd")]([ExtResource("1_82txh")])
 inventory_size = 6

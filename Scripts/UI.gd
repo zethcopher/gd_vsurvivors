@@ -26,7 +26,9 @@ func display_game_over():
 	pass
 
 func show_levelup_choices(show: bool):
+	
 	$LevelUp.visible = show
+	$LevelUp.upgrade_choices = load("res://Resources/UpgradeChoices.tres")
 	$LevelUp.assign_choices()
 	pass
 	

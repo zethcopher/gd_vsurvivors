@@ -1,15 +1,18 @@
 extends CharacterBody2D
+class_name Player
 
 
-@export var speed = 100.0
-
-@export var max_hp = 100
-@export var hp = max_hp
-@export var hp5 = 1.0
+#@export var max_hp = 100
 @export var xp = 0
 @export var max_xp = 100
-@export var lvl = 0
 
+@export var player_stats: PlayerStats
+@onready var hp = player_stats.max_health
+#@onready var speed = player_stats.speed
+
+ 
+
+var player_weapon_scene = preload("res://Weapons/Weapon.tscn")
 
 @onready var sprite_2d = $Sprite2D
 @onready var animation_player = $AnimationPlayer
@@ -18,7 +21,8 @@ extends CharacterBody2D
 
 
 @onready var player_weapons_slots: Array[Node] = $PlayerWeapons.get_children()
-@export var weapon_inventory: Inventory
+var weapon_inventory: Inventory = load("res://Inventory/WeaponInventory.tres")
+var trinket_inventory: Inventory = load("res://Inventory/TrinketInventory.tres")
 
 signal playerdied
 signal gained_experience(xp)
@@ -30,25 +34,26 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var flipped = false
 	
 func _ready():
+	#owner.weapon_inventory = weapon_inventory
+	#owner.trinket_inventory = trinket_inventory
 	update_weapons()
 	pass
 
 func level_up():
 	xp = 0
-	lvl += 1
+	player_stats.level += 1
 	max_xp = max_xp * 1.5
-	leveled_up.emit(lvl, max_xp)
+	leveled_up.emit(player_stats.level, max_xp)
 	#print("level: " +str(lvl) + " max_xp: " + str(max_xp))
 	
 func update_weapons():
 	for i in weapon_inventory.items.size():
 		if player_weapons_slots[i].get_child_count() == 0:
 			#add a new weapon into slot
-			var new_weapon = weapon_inventory.items[i].weapon_scene.instantiate()
+			var new_weapon = player_weapon_scene.instantiate()
 			new_weapon.weapon = weapon_inventory.items[i]
+			#new_weapon.player_stats = player_stats
 			player_weapons_slots[i].add_child(new_weapon)
-		else:
-			player_weapons_slots[i].get_child(0).update()
 	pass # Replace with function body.
 	
 func gain_experience(gained_xp):
@@ -63,9 +68,9 @@ func die():
 		playerdied.emit()
 		
 func regen():
-	var regenAmount = hp5/5
+	var regenAmount = player_stats.recovery
 	
-	if ((hp + regenAmount) <= max_hp):
+	if regenAmount > 0 and (hp + regenAmount) <= player_stats.max_health:
 		hp += regenAmount
 	else:
 		return
@@ -84,7 +89,7 @@ func move():
 	
 	var direction = Input.get_vector("move_left", "move_right","move_up", "move_down")
 	
-	velocity = direction * speed
+	velocity = direction * (player_stats.speed * 75)
 	
 	if velocity.length() > 0.0:
 		#set animation to running
@@ -111,7 +116,7 @@ func _on_hitbox_body_entered(enemy):
 	if enemy == null:
 		return
 	if enemy is Enemy:
-		enemy.start_attacking()
+		enemy.start_attacking(self)
 
 func _on_hitbox_body_exited(enemy):
 	if enemy == null:

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="PlayerStats" load_steps=2 format=3 uid="uid://btc7d2mmx4mut"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerStats.gd" id="1_lvr5b"]
+
+[resource]
+script = ExtResource("1_lvr5b")
+level = 1
+max_health = 100
+recovery = 0.0
+armor = 0
+movespeed = 100
+might = 1.0
+speed = 1.0
+duration = 1.0
+area = 1.0
+cooldown = 1.0
+projectiles = 0
+magnet = 0

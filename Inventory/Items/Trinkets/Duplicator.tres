@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Trinket" load_steps=7 format=3 uid="uid://dwlc1os2eqsuq"]
+
+[ext_resource type="Script" path="res://Scripts/Trinket.gd" id="1_j64o4"]
+[ext_resource type="Script" path="res://Scripts/TrinketStats.gd" id="1_ogdxa"]
+[ext_resource type="Texture2D" uid="uid://dbesh4wqiyagq" path="res://Assets/spritesheet_16x16.png" id="3_v5vvo"]
+
+[sub_resource type="Resource" id="Resource_8dk0m"]
+script = ExtResource("1_ogdxa")
+value = 1.0
+item_level_description = "[All] Increases projectiles by 1."
+
+[sub_resource type="Resource" id="Resource_1qvwf"]
+script = ExtResource("1_ogdxa")
+value = 1.0
+item_level_description = "[All] Increases projectiles by 1."
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0o1qk"]
+atlas = ExtResource("3_v5vvo")
+region = Rect2(130, 256, 11, 15)
+
+[resource]
+script = ExtResource("1_j64o4")
+stat = "projectiles"
+texture = SubResource("AtlasTexture_0o1qk")
+name = "Duplicator"
+item_id = 0
+level = 1
+item_levels = Array[Resource("res://Scripts/ItemStats.gd")]([SubResource("Resource_8dk0m"), SubResource("Resource_1qvwf")])

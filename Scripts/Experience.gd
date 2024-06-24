@@ -2,6 +2,7 @@ extends Area2D
 
 @export var xp = 100
 
+
 signal picked_up(xp)
 
 func _ready():

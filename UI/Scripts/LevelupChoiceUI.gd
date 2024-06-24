@@ -16,7 +16,7 @@ func update_choice(choice: Item):
 	item = choice
 	choice_name.text = choice.name
 	texture_rect.texture = choice.texture
-	choice_description.text = choice.item_levels[(item.level)+1].item_level_description
+	choice_description.text = choice.get_itemstats_at_level(choice.level + 1).item_level_description
 	pass
 
 func _ready():

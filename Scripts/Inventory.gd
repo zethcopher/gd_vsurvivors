@@ -7,8 +7,8 @@ class_name Inventory
 
 func addItem(newItem: Item):
 	if items.has(newItem):
-		items[items.find(newItem)].item_level_up()
-		
+		return items[items.find(newItem)].item_level_up()
 	elif items.size() < inventory_size:
 		items.append(newItem)
+		return false
 	pass

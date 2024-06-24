@@ -1,7 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://c574bbit573v5"]
+[gd_scene load_steps=3 format=3 uid="uid://c574bbit573v5"]
 
+[ext_resource type="Script" path="res://Scripts/PlayerWeapon.gd" id="1_kdfbm"]
 [ext_resource type="PackedScene" uid="uid://da65efom23wew" path="res://Components/ProjectileSpawnerComponent.tscn" id="2_txvo4"]
 
-[node name="Weapon" type="Node2D"]
+[node name="PlayerWeapon" type="Node2D"]
+script = ExtResource("1_kdfbm")
 
 [node name="ProjectileSpawner" parent="." instance=ExtResource("2_txvo4")]
+
+[node name="WeaponCooldownTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="WeaponCooldownTimer" to="ProjectileSpawner" method="_on_weapon_cooldown_timer_timeout"]

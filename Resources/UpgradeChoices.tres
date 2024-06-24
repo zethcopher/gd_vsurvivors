@@ -1,8 +1,11 @@
-[gd_resource type="Resource" script_class="UpgradeChoices" load_steps=3 format=3 uid="uid://clgabjljgsnty"]
+[gd_resource type="Resource" script_class="UpgradeChoices" load_steps=6 format=3 uid="uid://clgabjljgsnty"]
 
 [ext_resource type="Script" path="res://Scripts/UpgradeChoices.gd" id="1_7ry1o"]
 [ext_resource type="Resource" uid="uid://bflskdbycrrug" path="res://Inventory/Items/Weapons/Axe.tres" id="1_gpffl"]
+[ext_resource type="Resource" uid="uid://f1nxdor2m1rx" path="res://Inventory/Items/Weapons/Bible.tres" id="2_gwptb"]
+[ext_resource type="Resource" uid="uid://dwlc1os2eqsuq" path="res://Inventory/Items/Trinkets/Duplicator.tres" id="3_ktl4b"]
+[ext_resource type="Resource" uid="uid://mkbj26ax4rkb" path="res://Inventory/Items/Trinkets/Spinach.tres" id="4_lwavp"]
 
 [resource]
 script = ExtResource("1_7ry1o")
-choices = Array[Resource("res://Scripts/Item.gd")]([ExtResource("1_gpffl")])
+choices = Array[Resource("res://Scripts/Item.gd")]([ExtResource("1_gpffl"), ExtResource("2_gwptb"), ExtResource("3_ktl4b"), ExtResource("4_lwavp")])

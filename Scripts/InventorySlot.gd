@@ -13,7 +13,7 @@ func _ready():
 func update(item: Item):
 	sprite_2d.texture = item.texture
 	print(item.texture)
-	if item.level > 0:
+	if item.level > 1:
 		item_level_label.visible = true
 		item_level.text = str(item.level)
 		item_level.visible = true

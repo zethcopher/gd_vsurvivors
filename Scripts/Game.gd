@@ -1,8 +1,13 @@
 extends Node2D
 class_name Game
 
-@export var weapon_inventory: Inventory
-@export var trinket_inventory: Inventory
+const weapon_inventory: Inventory = preload("res://Inventory/WeaponInventory.tres")
+const trinket_inventory: Inventory = preload("res://Inventory/TrinketInventory.tres")
+
+var available_items: UpgradeChoices = load("res://Resources/UpgradeChoices.tres")
+
+
+
 
 var Enemy = preload("res://Scenes/Enemy.tscn")
 var Experience = preload("res://Scenes/Experience.tscn")
@@ -25,10 +30,11 @@ func _ready():
 func spawnEnemy():
 	for n in difficulty:
 		var enemy = Enemy.instantiate()
-		add_child(enemy)
 		path_follow_2d.progress_ratio = randf()
 		enemy.global_position = path_follow_2d.global_position
+		#enemy.enable_hitboxes()
 		enemy.connect("enemy_died", _on_enemy_died)
+		add_child(enemy)
 	
 func spawnExperience(enemyPos):
 	var experience = Experience.instantiate()
@@ -86,14 +92,24 @@ func _on_game_timer_timeout():
 	pass # Replace with function body.
 
 func _on_ui_upgrade_chosen(item):
+	var item_is_max_level = false
+	
 	if item is Weapon:
-		weapon_inventory.addItem(item)
+		#needs to be put into it's own function		
+		item_is_max_level = weapon_inventory.addItem(item)
 		ui.update_inventory_ui(weapon_inventory)
 		player.update_weapons()
 		#add_weapon(item.weapon_scene)
 	elif item is Trinket:
-		trinket_inventory.addItem(item)
+		#needs to be put into it's own function
+		item_is_max_level = trinket_inventory.addItem(item)
 		ui.update_inventory_ui(trinket_inventory)
-
+		#need to update player stats
+		player.player_stats[item.stat] += item.get_itemstats_at_level(item.level).value
+		#player.player_stats.emit_changed()d
+	if item_is_max_level:
+			var item_index = available_items.choices.find(item)
+			available_items.choices.remove_at(item_index)
+			available_items.emit_changed()
 	pause(false)
 	pass # Replace with function body.
